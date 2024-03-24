@@ -1,0 +1,11 @@
+create sequence degrees_seq start with 1 increment by 50;
+create sequence ratings_seq start with 1 increment by 50;
+create sequence students_seq start with 1 increment by 50;
+create sequence subjects_seq start with 1 increment by 50;
+create table degrees (degree_id integer not null, comment varchar(255), degree float(53), student_id integer, primary key (degree_id));
+create table ratings (rating_id integer not null, assessment_date timestamp(6), comment varchar(255) not null, rating integer, subject_id integer, primary key (rating_id));
+create table students (student_id integer not null, first_name varchar(255), last_name varchar(255), subject_id integer, primary key (student_id));
+create table subjects (subject_id integer not null, max_capacity integer, name varchar(255), primary key (subject_id));
+alter table if exists degrees add constraint FKf0axdit49npvsh8ifieo1y4ye foreign key (student_id) references students;
+alter table if exists ratings add constraint FKnqrs7nvqp4hd4c3jay20te9bk foreign key (subject_id) references subjects;
+alter table if exists students add constraint FKjiuf59u8wjvntye38tdbbkef1 foreign key (subject_id) references subjects;
