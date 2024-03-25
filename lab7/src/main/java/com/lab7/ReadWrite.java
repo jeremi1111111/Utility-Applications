@@ -7,7 +7,7 @@ import java.util.*;
 public class ReadWrite {
     public static void saveToFileSerialization() throws IOException {
         FileOutputStream fileOutputStream
-                = new FileOutputStream("lab7/school.txt"); // change each of these paths if you download only lab7
+                = new FileOutputStream("school.txt");
         ObjectOutputStream objectOutputStream
                 = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(StudentApplication.school);
@@ -17,7 +17,7 @@ public class ReadWrite {
 
     public static void readFromFileSerialization() throws IOException, ClassNotFoundException {
         FileInputStream fileInputStream
-                = new FileInputStream("lab7/school.txt");
+                = new FileInputStream("school.txt");
         ObjectInputStream objectInputStream
                 = new ObjectInputStream(fileInputStream);
         ClassContainer school = (ClassContainer) objectInputStream.readObject();
@@ -83,15 +83,15 @@ public class ReadWrite {
                 }
             }
         }
-        File subjectsCSV = new File("lab7/subjects.csv");
+        File subjectsCSV = new File("subjects.csv");
         try (PrintWriter printWriter = new PrintWriter(subjectsCSV)) {
             subjects.forEach(printWriter::println);
         }
-        File studentsCSV = new File("lab7/students.csv");
+        File studentsCSV = new File("students.csv");
         try (PrintWriter printWriter = new PrintWriter(studentsCSV)) {
             students.forEach(printWriter::println);
         }
-        File degreesCSV = new File("lab7/degrees.csv");
+        File degreesCSV = new File("degrees.csv");
         try (PrintWriter printWriter = new PrintWriter(degreesCSV)) {
             degrees.forEach(printWriter::println);
         }
@@ -99,7 +99,7 @@ public class ReadWrite {
 
     public static void readFromFileCSV() throws IOException {
         List<Degree> degrees = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("lab7/degrees.csv"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("degrees.csv"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 List<String> degree;
@@ -110,7 +110,7 @@ public class ReadWrite {
             }
         }
         List<Student> students = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("lab7/students.csv"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("students.csv"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 List<String> student;
@@ -138,7 +138,7 @@ public class ReadWrite {
 
     private static ClassContainer getClassContainer() throws IOException {
         ClassContainer school = new ClassContainer();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("lab7/subjects.csv"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("subjects.csv"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 List<String> subject;
